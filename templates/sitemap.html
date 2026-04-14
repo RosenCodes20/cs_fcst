@@ -1,0 +1,71 @@
+<?php
+if ($page->title) {
+?>
+<h1 class="title"><?= $page->title ?></h1>
+<?php
+}
+
+echo content($page->content);
+?>
+
+<h2>&nbsp;</h2>
+
+<h2><a href="<?= HOST ?>"><?= _t("sitemap_начало") ?></a></h2>
+<?php menu_records( 1 ) ?>
+
+<h2>&nbsp;</h2>
+
+<h2><a href="<?= HOST ?>"><?= _t("sitemap_ляво_меню") ?></a></h2>
+<?php menu_records( 2 ) ?>
+
+<h2>&nbsp;</h2>
+
+<h2><a href="<?= url( 'page.php?id=8', 'page', 8 ) ?>"><?= _t("sitemap_ОБЯВИ") ?></a></h2>
+
+<h2>&nbsp;</h2>
+
+<h2><a href="<?= url( 'events-list.php', 'page', 6 ) ?>"><?= _t("sitemap_СЪБИТИЯ") ?></a></h2>
+
+<h2>&nbsp;</h2>
+
+<h2><a href="<?= url( 'page.php?id=7', 'page', 7 ) ?>"><?= _t("sitemap_Условия за ползване") ?></a></h2>
+
+<h2>&nbsp;</h2>
+
+<h2><a href="<?= url( 'contacts.php', 'page', 4 ) ?>"><?= _t("sitemap_Контакти") ?></a></h2>
+
+<h2>&nbsp;</h2>
+
+<h2><a href="<?= url( 'sitemap.php', 'page', 5 ) ?>"><?= _t("sitemap_Карта на сайта") ?></a></h2>
+
+<br>
+
+
+<?php
+function menu_records( $parent_id = false, $level = 1 )
+{
+	global $menus;
+	
+	if ( check_submenu( $parent_id ) ) {
+?>
+	<ul class="sitemap-list">
+<?php	
+		foreach ($menus as $item) {
+		
+			if ($item->parent_id == $parent_id) {
+?>
+		<li>
+			<a <?php if ($item->target) { ?>target="<?= $item->target ?>"<?php } ?> href="<?= menu_url( $item ) ?>"><span><?= $item->title ?></span></a>
+<?php
+				menu_records( $item->id, $level + 1 );
+?>
+		</li>
+<?php
+			}
+		}
+?>
+	</ul>
+<?php
+	}
+}
+?>

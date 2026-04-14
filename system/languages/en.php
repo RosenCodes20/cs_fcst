@@ -1,0 +1,87 @@
+<?php
+
+$_TRANSLATIONS = array (
+
+	'website_default_title' => 'Technical Universiti - Sofia',
+	'website_default_description' => 'Home Page of Computer Systems Department at Faculty of Computer Systems and Control, Technical University of Sofia.',
+	'website_default_keywords' => 'computer science, Computer Science!, computer science!, cscience, CScience, TU-Sofia!, tu-sofia, tu, computer systems, cs, computer systems!, Computer Systems, engineering education, itt, course catalog',
+	'лого текст' => 'TECHNICAL UNIVERSITY - SOFIA',
+	'лого подтекст' => 'FCSC',
+	
+	'ОБЯВИ' => 'ANNOUNCEMENTS',
+	'СЛЕДВАЩО СЪБИТИЕ' => 'NEXT EVENT',
+	'СЪБИТИЯ' => 'EVENTS',
+	'Прочети повече тук' => 'Read more',
+	'ВАЖНИ ВРЪЗКИ' => 'IMPORTANT LINKS',
+	'напред' => 'search',
+	'МИНАЛО СЪБИТИЕ' => 'PAST EVENT',
+	
+	'events_notice' => 'This page shows events for',
+	'events_notice_link' => 'See all events',
+	'Няма намерени събития' => 'No events found',
+	
+	'footer_Начало' => 'Home',
+	'footer_Условия за ползване' => 'Terms of use',
+	'footer_Карта на сайта' => 'Sitemap',
+	'footer_Контакти' => 'Contacts',
+	
+	'Днес' => 'Today',
+	'Дата на публикуване' => 'Published',
+	'Януари' => 'January',
+	'Февруари' => 'February',
+	'Март' => 'March',
+	'Април' => 'April',
+	'Май' => 'May',
+	'Юни' => 'June',
+	'Юли' => 'July',
+	'Август' => 'August',
+	'Септември' => 'September',
+	'Октомври' => 'October',
+	'Ноември' => 'November',
+	'Декември' => 'December',
+	
+	'sitemap_начало' => 'home',
+	'sitemap_ляво_меню' => 'more information',
+	'sitemap_ОБЯВИ' => 'announcements',
+	'sitemap_СЪБИТИЯ' => 'events',
+	'sitemap_Условия за ползване' => 'terms of use',
+	'sitemap_Контакти' => 'contacts',
+	'sitemap_Карта на сайта' => 'sitemap',
+	
+	'грешка-поле-компания' => 'Company field can not be longer than 200 characters ',
+	'грешка-празно-поле-име' => 'Please fill in the Name',
+	'грешка-поле-име' => 'The field name can not be longer than 200 characters',
+	'грешка-празно-поле-имейл' => 'Please fill in e-mail',
+	'грешка-поле-имейл' => 'Email field can not be longer than 200 characters',
+	'грешка-поле-адрес' => 'Address field can not be longer than 200 characters',
+	'грешка-поле-телефон' => 'Phone field can not be longer than 200 characters',
+	'грешка-поле-запитване' => 'Request field can not be longer than 5000 characters',
+	'грешка-празно-поле-запитване' => 'Please fill in Question',
+	'грешка-поле-captcha' => "Invalid security code",
+	'send-error' => "Error sending request. Please try again later!",
+	'send-success' => "Your request has been sent successfully. <br> <b> The application number is",
+	
+	'Име' => 'Name',
+	'Електронна поща' => 'Email',
+	'Компания' => 'Company',
+	'Адрес' => 'Address',
+	'Телефон' => 'Phone',
+	'Запитване' => 'Question',
+	'Код за сигурност' => 'Security code',
+	'Нов код' => 'New code',
+	'забележка-задължителни-полета' => 'Fields marked <span class="star">*</span> are required.',
+	'Изпрати' => 'Submit',
+	'Форма за запитване' => 'Feedback form',
+	
+	'Търси в сайта' => 'Search this website',
+	
+	'sitemap-index' => 'add description in system/languages/en.php',
+	'sitemap-events' => 'add description in system/languages/en.php',
+	'sitemap-team' => 'add description in system/languages/en.php',
+	'sitemap-software' => 'add description in system/languages/en.php',
+	'sitemap-gallery' => 'add description in system/languages/en.php',
+	'sitemap-contacts' => 'add description in system/languages/en.php',
+	'sitemap-sitemap' => 'add description in system/languages/en.php',
+);
+
+?>

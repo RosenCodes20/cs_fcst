@@ -1,0 +1,123 @@
+
+<script type="text/javascript" src="scripts/ckeditor/ckeditor.js"></script>
+
+<h1 class="title"><?= $new_translation ? "Добавяне на превод" : ( $id ? 'Редактиране на меню' : 'Добавяне на меню' ) ?></h1>
+
+<?php include ("templates/translations.html") ?>
+
+<?php include ("system/messages.php") ?>
+
+<form name="myform" action="<?= $_SERVER['PHP_SELF'] ?><?php if ($id) echo "?id=".$id; ?>" method="post">
+
+<table class="form">
+	<tr>
+		<th>Заглавие:</th>
+		<td>
+			<input type="text" name="title" value="<?= $data['title'] ?>" maxlength="255" class="input-text<?php if ($errors['title']) echo " error"; ?>">
+		</td>
+	</tr>
+	<tr>
+		<th>Активен:</th>
+		<td>
+			<select name="active" class="input-select">
+				<option value="Yes" <?php if ($data['active'] == "Yes") echo "selected"; ?>>Да
+				<option value="No" <?php if ($data['active'] == "No") echo "selected"; ?>>Не
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<th>Основно меню:</th>
+		<td>
+			<select name="parent_id" class="input-select<?php if ($errors['parent_id']) echo " error"; ?>" style="width:auto; min-width:250px;">
+				<option value=""> - Изберете меню -
+<?php
+select_records();
+?>
+			</select>
+		</td>
+	</tr>
+		<th>Линк:</th>
+		<td>
+			<div id="block_page" style="padding-top:3px; <?php if ($data['type'] != 'page') { ?>display:none;<?php } ?>">
+				<a href="pages-edit.php?id=<?= $data['item_id'] ?>">Страница: <?= $data['item_id'] ?></a> &nbsp; <a onclick="menus_clear_url();" style="cursor:pointer; color:red;">изчисти</a>
+			</div>
+			<div id="block_url" <?php if ($data['type'] == 'page') { ?>style="display:none;"<?php } ?>>
+				<input id="url" type="text" name="url" value="<?= get_var($data['url']) ?>" maxlength="255" class="input-text<?php if ($errors['url']) echo " error"; ?>">
+			</div>
+		</td>
+	</tr>
+	</tr>
+		<th>Отваряне в:</th>
+		<td>
+			<select name="target" class="input-select<?php if ($errors['target']) echo " error"; ?>" style="width:auto; min-width:250px;">
+				<option value="" <?php if ($data['target'] != '_blank') echo 'selected'; ?>>Същия прозоерец
+				<option value="_blank" <?php if ($data['target'] == '_blank') echo 'selected'; ?>>Нов прозорец
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<th class="last">&nbsp;</td>
+		<td class="last">
+			<input id="type" type="hidden" name="type" value="<?= $data['type'] ?>">
+			<input id="item_id" type="hidden" name="item_id" value="<?= $data['item_id'] ?>">
+			<input type="submit" value="Запиши">
+		</td>
+	</tr>
+</table>
+
+<?php
+if (!$data || (!$_POST && $new_translation) ) {
+?>
+<script>
+	document.forms.myform.elements[0].focus();
+</script>
+<?php
+}
+?>
+
+</form>
+
+<script>
+
+/*
+CKEDITOR.replace( 'ckeditor',
+{
+	filebrowserBrowseUrl : 'scripts/filemanager/index.html',
+	filebrowserUploadUrl : ''
+	
+});
+*/
+
+</script>
+
+<?php
+function select_records( $parent_id = false, $level = 1, $start_menu_id = false )
+{
+	global $id, $data, $menus, $_MAX_MENU_LEVEL;
+	
+	if (!$start_menu_id)
+		$start_menu_id = $parent_id;
+		
+	if ($_MAX_MENU_LEVEL[$start_menu_id] && $level > $_MAX_MENU_LEVEL[$start_menu_id])
+		return;
+	
+	foreach($menus as $item) {
+	
+		if ( $item->parent_id == $parent_id && $item->id != $id ) {
+?>
+		<option value="<?= $item->id ?>" <?php if ($data['parent_id'] == $item->id) echo "selected"; ?>>		
+<?php
+			if ($level > 1) {
+				for ($i=1; $i < ( $level - 1 ) * 2; $i++)
+					echo "&nbsp;&nbsp;&nbsp;";
+					
+				echo "&bull;&nbsp;&nbsp;";
+			}
+
+			echo $item->title;
+
+			select_records( $item->id, $level + 1, $start_menu_id );
+		}
+	}
+}
+?>

@@ -1,0 +1,22 @@
+
+<?php
+if ($message) {
+?>
+<div class="edit-message">&radic; &nbsp;<?= $message ?></div>
+<?php
+}
+
+if ($errors) {
+?>
+<ul class="errors">
+<?php
+	foreach (Form::errors( $errors ) as $error) {
+?>
+<li><?= $error ?></li>
+<?php
+	}
+?>
+</ul>
+<?php
+}
+?>

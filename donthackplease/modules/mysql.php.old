@@ -1,0 +1,61 @@
+<?php
+
+/*
+	MySQL modul
+	
+	Must be defined:
+	
+		define ('SQL_HOST', 'localhost');
+		define ('SQL_DATABASE', 'db_name');
+		define ('SQL_USER', 'root');
+		define ('SQL_PASSWORD', '');
+*/
+
+class MySQL
+{
+	function init()
+	{
+		@mysql_connect(SQL_HOST, SQL_USER, SQL_PASSWORD) or die ("Can't connect to MySQL server");
+		@mysql_query('use `'.SQL_DATABASE.'`') or die ("Can't connect to MySQL database");
+
+		mysql_query('SET character_set_results=utf8');
+		mysql_query('SET names=utf8');
+		mysql_query('SET character_set_client=utf8');
+		mysql_query('SET character_set_connection=utf8');
+		mysql_query('SET character_set_results=utf8');
+		mysql_query('SET collation_connection=utf8_general_ci');
+	}
+
+	function get($query)
+	{
+		$data = mysql_query($query);
+		
+		if (!$data)
+			return false;
+			
+		$result = mysql_fetch_object($data);		
+		mysql_free_result($data);
+		
+		return $result;
+	}
+
+	function table($query)
+	{
+		$data = mysql_query($query);
+		
+		if (!$data)
+			return false;
+			
+		$i = 0;
+		
+		while ($object = mysql_fetch_object($data))
+			$result[$i++] = $object;
+			
+		mysql_free_result($data);
+		
+		return $result;
+	}
+	
+} MySQL::init();
+
+?>

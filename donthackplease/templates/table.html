@@ -1,0 +1,122 @@
+
+<table class="table">
+	<tr>
+		<td colspan="<?= count($table->fields) + 2 ?>" class="navigation">
+			<form action="<?= $_SERVER['PHP_SELF'] ?>" method="get">
+<?php
+if ($table->navigation->page > 1) {
+?>
+			<a href="<?= $_SERVER['PHP_SELF'] ?>?page=<?= $table->navigation->page - 1 ?>">&laquo; предишна</a> &nbsp;
+<?php
+} else {
+?>
+			<span class="inactive">&laquo; предишна</span> &nbsp;
+
+<?php
+}
+?>
+			<input type="text" class="input" name="page" value="<?= $table->navigation->page ?>">
+			<input type="submit" value="Go">
+<?php
+if ($table->navigation->page < $table->navigation->pages) {
+?>
+			&nbsp; <a href="<?= $_SERVER['PHP_SELF'] ?>?page=<?= $table->navigation->page + 1 ?>">следваща &raquo;</a>
+<?php
+} else {
+?>
+			&nbsp; <span class="inactive"> следваща &raquo;</span>
+<?php
+}
+?>
+			&nbsp; &nbsp; Страници: <b><?= $table->navigation->pages ?></b>
+			</form>
+		</td>
+	</tr>
+	<tr>
+		<th>&nbsp;</th>
+<?php
+	foreach($table->fields as $key => $value) {
+?>
+		<th><?= $value ?></th>
+<?php
+	}
+?>
+		<th class="last"></th>
+	</tr>
+	<form action="<?= $_SERVER['REQUEST_URI'] ?>" method="post">
+<?php
+if ($table->records) {
+	foreach ($table->records as $item) {
+		$item = (array)$item;
+		
+		if ($item['tableDisabled']) {
+?>
+	<tr>
+		<td class="row" align="center"><img src="images/cross-disabled.png"></td>
+<?php
+			foreach ($table->disabled->fields as $key) {
+?>
+		<td class="row body<?php if (in_array($key, $table->types->enum)) echo ' '.$item[$key]; ?><?php if (!$item[$key]) echo ' empty'; ?>"><a href="<?= str_replace("_KEY", $item[$table->key], $table->url) ?>"><?= $item[$key] ? $item[$key] : "( празно )" ?></a></td>
+<?php
+			}
+?>
+		<td colspan="<?= $table->disabled->count - 1 ?>" class="row body empty">
+			<a href="<?= str_replace("_KEY", $item[$table->key], $table->url) ?>">
+				<?= $item['tableDisabled']['title'] ? $item['tableDisabled']['title'] : "( празно )" ?>
+<?php
+if ($item['tableDisabled']['type'] == 'translation') {
+?>
+ - <span class="translate"><img src="images/languages/<?= $translation->abbr ?>.png" width="18" height="12" style="top: 2px; margin-left: 2px; margin-right: 2px;"> преведи</span>
+<?php
+}
+?>
+			</a>
+		</td>
+		<td class="last"></td>
+	</tr>
+<?php
+		} else {
+?>
+	<tr>
+		<td class="row" align="center"><?php if ($item['deleteDisabled']) { ?><img src="images/cross-disabled.png"><?php } else { ?><a onclick="return confirm('Сигурни ли сте че искате да ИЗТРИЕТЕ запис # <?= $item['id'] ?> ?');" href="<?= add_to_link( "delete=".$item['id'], $_SERVER['REQUEST_URI'] ) ?>"><img src="images/cross.png"></a><?php } ?></td>
+<?php
+			foreach($table->fields as $key => $value) {
+				if (in_array($key, $table->types->input)) {
+					$table->submit = true;
+?>
+		<td class="row input"><input type="text" name="positions[<?= $item[$table->key] ?>]" value="<?= $item[$key] ?>" tabindex="1"></td>
+<?php
+				} else {
+?>
+		<td class="row body<?php if (in_array($key, $table->types->enum)) echo ' '.$item[$key]; ?><?php if (!$item[$key]) echo ' empty'; ?>"><a href="<?= str_replace("_KEY", $item[$table->key], $table->url) ?>"><?= $item[$key] ? $item[$key] : "( празно )" ?></a></td>
+<?php
+				}
+			}
+?>
+		<td class="last"></td>
+	</tr>
+<?php
+		}
+	}
+	
+	if ($table->submit) {
+?>
+	<tr>
+		<td colspan="<?= count($table->fields) + 2 ?>" class="row-submit">
+			<input type="submit" value="Запиши">
+		</td>
+	</tr>
+<?php
+	}	
+} else {
+?>
+	<tr>
+		<td colspan="<?= count($table->fields) + 2 ?>" class="not-found">
+			Няма намерени резултати
+		</td>
+	</tr>
+<?php
+}
+?>
+	</form>
+</table>

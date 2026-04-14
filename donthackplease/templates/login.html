@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Architect Group</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="stylesheets/login.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<?= HOST ?>/scripts/jquery.min.js"></script>
+</head>
+<body>
+
+<script>
+
+$(document).ready(function() {
+
+	$("#login_false").hide();
+	$("#login_false").fadeIn();
+});
+
+function form_focus(item)
+{
+	if (!is_focus(item)) {
+		item.value = '';
+		item.className += ' focus';
+	}
+}
+
+function is_focus(item)
+{
+	var i = 0, focus = false;
+	var a = item.className.split(" ");
+	
+	for (i=0; i<a.length; i++)
+		if (a[i] == 'focus')
+			focus = true;
+			
+	return focus;
+}
+</script>
+
+<div class="gradient">
+<div class="wrap">
+<div class="inner" style="padding-top:100px; padding-bottom: 100px;">
+
+
+<center>
+
+<div class="block-title">
+<a href="login.php" class="bot">Потребителски вход</a>
+</div>
+<div class="block-body">
+<div id="login">
+
+<form id="login_form" action="login.php" method="post">
+<input type="hidden" name="login_submit" value="1">
+<?php
+	if ($error) {
+?>
+<div id="login_messages" class="form-messages" style="display: block;">
+<div id="login_false" class="form-message-false"><?= $error ?></div>
+</div>
+<?php
+	} 
+?>
+<div class="br"><input type="submit"></div>
+<input style="margin-bottom:10px; height:21px; padding-left:2px; line-height:20px;" <?php if ($data['username']) echo "class='focus'"; ?> type="text" name="username" value="<?= $data['username'] ? $data['username'] : 'Потребителско име' ?>" onfocus="form_focus(this);">
+<input style="margin-bottom:10px; height:21px; padding-left:2px; line-height:20px;" <?php if ($data['password']) echo "class='focus'"; ?> type="password" name="password" value="<?= $data['password'] ? $data['password'] : 'Парола' ?>" onfocus="form_focus(this);">
+
+<a id="login_btn" class="btn" onclick="document.getElementById('login_form').submit();"><span>Вход</span></a>
+<div class="clear"></div>
+</form>
+
+</div>
+</div>
+
+
+</div>
+<div class="footer">
+
+<ul>
+<li class="first"><a href="login.php">Административен панел</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

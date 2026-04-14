@@ -1,0 +1,21 @@
+<table cellpadding=0 cellspacing=0>
+<tr>
+<?php
+if ($page > 1) {
+?>
+<td><a href="<?= $navigation_file ?>?page=<?= $n_page - 1 ?><?= $link ?>" class="switch-prev"><span style="position:relative; top:-2px;">&laquo;</span></a></td>
+<?php
+}
+for ($i = $begin; $i <= $end; $i++) {
+?>
+<td><a href="<?= $navigation_file ?>?page=<?= $i ?><?= $link ?>" class="switch-nav<?php if ($n_page == $i) echo '-active' ?>"><?= $i ?></a></td>
+<?php
+}
+if ($n_page * $limit < $total_products) {
+?>
+<td><a href="<?= $navigation_file ?>?page=<?= $n_page + 1 ?><?= $link ?>" class="switch-next"><span style="position:relative; top:-2px;">&raquo;</span></a></td>
+<?php
+}
+?>
+</tr>
+</table>

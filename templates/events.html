@@ -1,0 +1,24 @@
+<?php
+if ($event->title) {
+?>
+<h1 class="title" style="margin-bottom:10px;"><?= $event->title ?></h1>
+<?php
+}
+?>
+
+<span class="article-date" title="<?= _t("Дата на публикуване") ?>"><?= get_date_format($event->event_date) ?></span>
+			 
+<div class="article-body">
+<?php
+$image = "images/events/".($event->id)."/main.jpg";
+if (file_exists($image) && $event->show_image) {
+?>
+<div class="events-image"><img width="300" height="196" style="margin-top:1px;" src="<?= HOST ?>/<?= Image::resize("images/events/".($event->id)."/main.jpg", 300, 196) ?>"></div>
+<?php
+}
+?>
+<?= $event->content ? content($event->content) : ($event->short_desc)."..." ?>
+</div>
+
+<div class="clear"></div>
+	

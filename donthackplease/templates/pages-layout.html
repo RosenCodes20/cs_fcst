@@ -1,0 +1,31 @@
+<ul id="menu">
+<li <?php if ($bmenu == 'pages') echo 'class="active"'; ?>><a href="pages.php">Страници</a></li>
+<li class="special<?php if ($bmenu == 'pages-edit') echo ' active'; ?>"><a href="pages-edit.php">+ Добави</a></li>
+</ul>
+
+<?php
+if ($bmenu == 'pages-edit') {
+	if ($id) {
+?>
+<ul id="submenu">
+<li <?php if ($submenu == 'pages-edit') echo 'class="active"'; ?>><a href="pages-edit.php?id=<?= $id ?>">&nbsp;Основна информация&nbsp;</a></li>
+<li <?php if ($submenu == 'pages-seo') echo 'class="active"'; ?>><a href="pages-seo.php?id=<?= $id ?>">&nbsp;S. E. O.&nbsp;</a></li>
+<li class="external"><a href="<?= HOST ?>/page.php?id=<?= $id ?>&language=<?= $_SESSION['translation']->abbr ?>" target="_blank">Виж на сайта</a></li>
+</ul>
+<?php
+	} else {
+?>
+<ul id="submenu">
+<li class="active"><a>&nbsp;Основна информация&nbsp;</a></li>
+<li class="disabled"><a>&nbsp;S. E. O.&nbsp;</a></li>
+</ul>
+<?php
+	}
+} 
+?>
+
+<div id="content">
+<?php include ("templates/".$file); ?>
+</div>
+
+

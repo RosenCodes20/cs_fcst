@@ -1,0 +1,107 @@
+
+<?php
+if ($page->title) {
+?>
+<h1 class="title"><?= $page->title ?></h1>
+<?php
+}
+
+echo content($page->content);
+?>
+			 
+<div class="clear"></div>
+
+<?php
+if ($page->content) {
+?>
+<div style="margin-top:20px;"></div>
+<?php
+}
+
+if ($_RDATE) {
+?>
+<div class="fancy-box"><?= _t("events_notice") ?> <b><?= $_RDATE ?></b>.<br><a href="<?= url( 'events-list.php', 'page', 6 ) ?>"><?= _t("events_notice_link") ?> &raquo;</a></div>
+<?php
+}
+if ($events) {
+?>
+
+<?php
+	if ($total_pages > 1) {
+?>
+<div class="navigation" style="margin-bottom:13px;">
+<?php include ("templates/navigation.html"); ?>
+</div>
+<?php
+	}
+?>
+			 
+          <div style="padding-top:15px;">
+
+<?php
+	$i = 0;
+	foreach ($events as $item) {
+		$image = "images/events/".($item->id)."/main.jpg";	
+		$mlink = $item->slug ? HOST.'/'.($item->slug) : HOST."/events.php?id=".($item->id);
+?>
+
+<?php
+	if ($i) {
+?>
+<div class="clear"></div>
+<div class="hd"></div>
+<div class="clear"></div>
+<?php
+	}
+?>
+
+<?php
+	if (file_exists($image)) {
+?>
+
+<div class="post-image-container">
+<a <?php if ($item->link) echo "target='_blank'"; ?> href="<?= $mlink ?>"><img class="post-image" width="100" height="65" src="<?= HOST ?>/<?= Image::resize("images/events/".($item->id)."/main.jpg", 100, 65 ) ?>"></a>
+</div>
+<?php
+	}
+?>
+
+<div class="post" style='<?php if (file_exists($image)) { ?>width:522px;<?php } else { ?>width:650px;<?php } ?>'>
+<div class="post-top"><a <?php if ($item->link) echo "target='_blank'"; ?> href="<?= $mlink ?>" class="post-title"><?= $item->title ?></a></div>
+<span class="post-date" title="Дата на публикуване"><?= get_date_format($item->event_date) ?><?php if (str_replace("-", "", $item->event_date) < date("Ymd")) { ?><b> - <?= _t("МИНАЛО СЪБИТИЕ") ?></b><?php } ?></span>
+<span class="post-comments" title="Коментари"><?= $item->comments ?></span>
+<div class="post-body">
+<p>
+<?= $item->short_desc ?> <a class="post-more blink" <?php if ($item->link) echo "target='_blank'"; ?> href="<?= $mlink ?>">[ <span>&hellip;</span> ]</a>
+</p>
+</div>
+</div>
+
+<?php
+		$i++;
+	}
+?>
+
+<div class="clear"></div>
+
+<?php
+	if ($total_pages > 1) {
+?>
+<div class="navigation navigation-bottom" style="margin-top:33px;">
+<?php include ("templates/navigation.html"); ?>
+</div>
+<?php
+	}
+?>
+	</div>
+	
+<?php
+} else {
+?>
+<div class="clear"></div>
+<div class="not-found-box"><?= _t("Няма намерени събития") ?></div>
+<?php
+}
+?>
+
+<div class="clear"></div>

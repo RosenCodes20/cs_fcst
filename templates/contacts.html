@@ -1,0 +1,117 @@
+
+<script src="https://www.google.com/recaptcha/api.js?hl=bg"></script>
+
+<?php
+
+if ($page->title) {
+?>
+<h1 class="title"><?= $page->title ?></h1>
+<?php
+}
+
+if ( $_GET['success'] ) {
+
+	$_SESSION['message'] = _t('send-success').": &nbsp; <span style='font-size:20px;'>".( ( int) $_GET['success'] )."</span></b>";
+			
+
+}
+?>
+
+<?php include ("system/messages.php") ?>
+				
+          <div>
+            <?= content($page->content) ?>
+			
+            <div>
+
+<h1 style="margin-top:0px;"><?= _t("Форма за запитване") ?></h1>
+				
+              <form id="contacts-form" action="contacts.php" name="contacts" method="post">
+                <table width="97%">
+                  <tr>
+                    <td align="left" valign="top" class="field-td" id="Contact"><strong>
+                      <label for="FullName"><?= _t("Име") ?>: <span class="star">*</span></label>
+                      </strong></td>
+                    <td align="left" valign="top"><input value="<?= $data['name'] ?>" name="name" type="text" size="40" class="input-text<?php if ($errors['name']) echo " error"; ?>" /></td>
+                  </tr>
+                  <tr>
+                    <td align="left" valign="top" class="field-td" id="Email"><strong>
+                      <label for="Email"><?= _t("Електронна поща") ?>: <span class="star">*</span></label>
+                      </strong></td>
+                    <td align="left" valign="top"><input value="<?= $data['email'] ?>" name="email" type="text" size="40" class="input-text<?php if ($errors['email']) echo " error"; ?>" /></td>
+                  </tr>
+                  <tr>
+                    <td width="145" align="left" valign="top" class="field-td" id="Company"><strong>
+                      <label for="Company"><?= _t("Компания") ?>:</label>
+                      </strong></td>
+                    <td width="280" align="left" valign="top"><input value="<?= $data['company'] ?>" name="company" type="text" size="40" class="input-text<?php if ($errors['company']) echo " error"; ?>" /></td>
+                  </tr>
+                  <tr>
+                    <td align="left" valign="top" class="field-td" id="Address"><strong>
+                      <label for="Address"><?= _t("Адрес") ?>:</label>
+                      </strong></td>
+                    <td align="left" valign="top"><input value="<?= $data['address'] ?>" name="address" type="text" size="40" class="input-text<?php if ($errors['address']) echo " error"; ?>" /></td>
+                  </tr>
+                  <tr>
+                    <td align="left" valign="top" class="field-td" id="Phone"><strong>
+                      <label for="Phone"><?= _t("Телефон") ?>:</label>
+                      </strong></td>
+                    <td align="left" valign="top"><input value="<?= $data['phone'] ?>" name="phone" type="text" size="40" class="input-text<?php if ($errors['phone']) echo " error"; ?>" /></td>
+                  </tr>
+                  <tr>
+                    <td align="left" valign="top" class="field-td" id="Comments"><strong>
+                      <label for="Comments"><?= _t("Запитване") ?>: <span class="star">*</span></label>
+                      </strong></td>
+                    <td align="left" valign="top"><textarea name="comments" cols="32" rows="6" class="input-text<?php if ($errors['comments']) echo " error"; ?>"><?= $data['comments'] ?></textarea></td>
+                  </tr>
+						<tr><td height="5"></td></tr>
+                  <tr>
+                    <td align="left" valign="top" class="field-td" id="Captcha">
+					
+					<?php
+					/*
+					<strong>
+                      <label for="Captcha"><?= _t("Код за сигурност") ?>: <span class="star">*</span></label>
+                      </strong>
+					 */
+					 ?>
+							</td>
+							<td>
+								
+								<div class="g-recaptcha" data-sitekey="<?= RECAPTCHA_SITEKEY ?>"></div>
+					
+					<?php
+					/*
+								<input name="captcha" autocomplete="off" class="ftext<?php if ($errors['captcha']) echo " error"; ?>" type="text" maxlength="255"><br>
+								<img style="margin-top:5px;" id="captcha" src='captcha.php' width="200" height="50"><br>
+								<a style="cursor:pointer;" onclick='reload_captcha();'><?= _t("Нов код") ?></a>
+					*/
+					?>
+							</td>
+						</tr>
+						<tr><td height="5"></td></tr>
+                  <tr>
+                    <td align="left" valign="top" class="field-td" id="Comments"></td>
+                    <td align="left" valign="top"><?= _t('забележка-задължителни-полета') ?></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td><input type="submit" name="submit" class="button" value="<?= _t("Изпрати") ?>" /></td>
+                  </tr>
+                </table>
+              </form>
+            </div>
+
+		</div>
+        <div class="clear"></div>
+
+<?php
+if (!$data || !$_POST) {
+?>
+<script>
+	document.forms.contacts.elements[0].focus();
+</script>
+<?php
+}
+?>		
+
