@@ -2850,7 +2850,13 @@
                 <div class="e-con-inner">
                     <div class="elementor-element elementor-element-e572036 elementor-widget elementor-widget-text-editor" data-id="e572036" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
                         <div class="elementor-widget-container">
-                            <div class="tp-footer-copyright">© <script>const d = Date(); </script> <a href="/acadia-rtl/">.Технически университет - София</a> .Всички права запазени</div>								</div>
+                            <div class="tp-footer-copyright"> <a href="/acadia-rtl/">
+                                Технически университет - София</a> Всички права запазени © <span id="year"></span>
+                            </div>
+                            <script>
+                                document.getElementById("year").textContent = new Date().getFullYear();
+                            </script>
+                        </div>
                     </div>
                 </div>
             </div>
