@@ -76,6 +76,16 @@ switch ( $_SEO->key )
 if (count($params) > $expected_params)
 	$rewrite_file = "404.php";
 
+if (isset($params[0]) && $params[0] == 'cs_fcst') {
+    if (empty($params[1]) || strpos($params[1], 'index.php') === 0 || strpos($params[1], '?') === 0) {
+        $rewrite_file = "home.php";
+    }
+}
+
+if (empty($params[0]) || $params[0] == '' || strpos($params[0], 'index.php') === 0) {
+    $rewrite_file = "home.php";
+}
+
 include ($rewrite_file);
 
 
