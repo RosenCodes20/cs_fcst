@@ -15,7 +15,7 @@ define ('SQL_PASSWORD', '');
 
 // Domain (including http://), without "/" at the end
 
-define ('HOST', 'http://localhost:63342/csft_project/');
+define ('HOST', 'http://localhost:63342/cs_fcst/');
 
 // Working subdirectory ( Example: "/websitedirectory" ). Use "/" for root directory
 
