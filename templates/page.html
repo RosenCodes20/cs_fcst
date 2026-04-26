@@ -591,6 +591,9 @@
         }
     }
 
+    #blanks ul li a:contains("Магистър специалност ИТ") {
+        display: none !important;
+    }
 </style>
 
 <p class="p-after">&nbsp;</p>
@@ -605,6 +608,18 @@
     elseif (isset($_GET['id']) && $_GET['id'] == "59"):
 ?>
         <div class="tp-page-ltr-wrapper" id="blanks" dir="ltr">
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+
+                    const els = document.querySelectorAll('#blanks ul li a');
+
+                    for (let el of els) {
+                        if (el.textContent.trim() === "Магистър специалност ИТ") {
+                            el.parentElement.remove();
+                        }
+                    }
+                });
+            </script>
 <?php
     else:
 ?>
@@ -683,7 +698,6 @@
         `;
     }
 
-    // Опционално: Преместване на секцията автоматично след заглавието "Учебна 2025/26 г."
     document.addEventListener("DOMContentLoaded", function() {
         const headings = document.querySelectorAll('h2');
         headings.forEach(h => {
@@ -693,4 +707,5 @@
             }
         });
     });
+
 </script>
