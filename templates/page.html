@@ -429,15 +429,65 @@
         display: none;
     }
 
-    .tp-page-ltr-wrapper p:nth-of-type(n+9) {
+    .tp-page-ltr-wrapper > h1 + h2 + p,
+    .tp-page-ltr-wrapper > h1 + h2 + p + p,
+    .tp-page-ltr-wrapper > h1 + h2 + p + p + p,
+    .tp-page-ltr-wrapper > h1 + h2 + p + p + p + p,
+    .tp-page-ltr-wrapper > h1 + h2 + p + p + p + p + p + p,
+    .tp-page-ltr-wrapper > h1 + h2 + p + p + p + p + p + p + p,
+    .tp-page-ltr-wrapper > h1 + h2 + p + p + p + p + p + p + p + p + p {
         display: none !important;
     }
+
+    .tp-page-ltr-wrapper > h1 + h2 + p + p + p + p + p + p + p + p,
+    .tp-page-ltr-wrapper > h1 + h2 + p + p + p + p + p {
+        background: none !important;
+        border-left: none !important;
+    }
+
+    .tp-page-ltr-wrapper h2 {
+        background: #f0f7ff !important;
+        border-left: 6px solid #2563eb !important;
+        padding: 25px !important;
+        border-radius: 12px !important;
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.1) !important;
+        margin: 30px auto !important;
+        line-height: 1.5 !important;
+    }
+
+    .tp-page-ltr-wrapper h2 span {
+        font-size: 18px !important;
+        color: #1e293b !important;
+        font-weight: 600 !important;
+        display: block;
+        font-family: inherit !important;
+    }
+
+    .tp-page-ltr-wrapper h2 span::before {
+        content: "📍 ";
+        font-size: 22px;
+    }
+
+    .tp-page-ltr-wrapper h2 span:contains("тел.") {
+        color: #2563eb !important;
+    }
+
+    @media (max-width: 600px) {
+        .tp-page-ltr-wrapper h2 span {
+            font-size: 16px !important;
+        }
+        .tp-page-ltr-wrapper h1.title {
+            font-size: 24px !important;
+        }
+    }
+
 </style>
 
 <div class="tp-page-ltr-wrapper" dir="ltr">
     <?php if ($page->title): ?>
     <h1 class="title"><?= $page->title ?></h1>
     <?php endif; ?>
+
 
         <?= content($page->content) ?>
 
