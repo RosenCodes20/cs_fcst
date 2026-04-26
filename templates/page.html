@@ -435,14 +435,10 @@
     .tp-page-ltr-wrapper > h1 + h2 + p + p + p + p,
     .tp-page-ltr-wrapper > h1 + h2 + p + p + p + p + p + p,
     .tp-page-ltr-wrapper > h1 + h2 + p + p + p + p + p + p + p,
-    .tp-page-ltr-wrapper > h1 + h2 + p + p + p + p + p + p + p + p + p {
-        display: none !important;
-    }
-
+    .tp-page-ltr-wrapper > h1 + h2 + p + p + p + p + p + p + p + p + p,
     .tp-page-ltr-wrapper > h1 + h2 + p + p + p + p + p + p + p + p,
     .tp-page-ltr-wrapper > h1 + h2 + p + p + p + p + p {
-        background: none !important;
-        border-left: none !important;
+        display: none !important;
     }
 
     .tp-page-ltr-wrapper h2 {
@@ -472,6 +468,11 @@
         color: #2563eb !important;
     }
 
+    .p-after {
+        background: none !important;
+        border-left: none !important;
+    }
+
     @media (max-width: 600px) {
         .tp-page-ltr-wrapper h2 span {
             font-size: 16px !important;
@@ -481,9 +482,19 @@
         }
     }
 
+
 </style>
+<?php
+    if (isset($_GET['id']) && $_GET['id'] == "65"):
+?>
+<p class="p-after">&nbsp;</p>
+
+<?php
+    endif;
+?>
 
 <div class="tp-page-ltr-wrapper" dir="ltr">
+
     <?php if ($page->title): ?>
     <h1 class="title"><?= $page->title ?></h1>
     <?php endif; ?>
@@ -507,7 +518,14 @@
 <!--?>-->
 </div>
 
+<?php
+    if (isset($_GET['id']) && $_GET['id'] == "65"):
+?>
+    <p class="p-after">&nbsp;</p>
 
+<?php
+    endif;
+?>
 <script>
     function celebrate() {
         document.getElementById('animation-result').innerHTML = '<h4 style="margin-top:20px; color:#166534;">ЧЕСТИТО! Очакваме те! 🎊</h4>';
