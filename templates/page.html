@@ -1,4 +1,4 @@
-
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 <style>
     main {
         font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
@@ -359,17 +359,153 @@
             padding: 15px 20px !important;
         }
     }
+
+    .status-checker {
+        text-align: center;
+        margin: 30px auto;
+        padding: 30px;
+        background: #f8fafc !important;
+        border: 2px dashed #cbd5e1;
+        border-radius: 20px;
+        max-width: 600px;
+    }
+
+    .status-checker h3 {
+        font-size: 20px !important;
+        color: #1e293b !important;
+        margin-bottom: 20px !important;
+        font-weight: 700 !important;
+    }
+
+    .status-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .status-btn {
+        padding: 15px 25px;
+        border: none;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 12px;
+    }
+
+    .btn-accepted {
+        background-color: #22c55e !important;
+        color: white !important;
+        box-shadow: 0 4px 14px rgba(34, 197, 94, 0.3);
+    }
+
+    .btn-not-accepted {
+        background-color: #94a3b8 !important;
+        color: white !important;
+    }
+
+    .status-btn:hover {
+        transform: translateY(-3px) scale(1.05);
+    }
+
+    .sad-emoji-anim {
+        font-size: 60px;
+        display: block;
+        margin-top: 20px;
+        animation: cry-bounce 2s infinite;
+    }
+
+    @keyframes cry-bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(15px); }
+    }
+
+    .tp-page-ltr-wrapper > h1 + h2 + h2 {
+        display: none;
+    }
+
+    .tp-page-ltr-wrapper p:nth-of-type(n+9) {
+        display: none !important;
+    }
 </style>
 
 <div class="tp-page-ltr-wrapper" dir="ltr">
-<?php
-if ($page->title) {
-?>
-<h1 class="title"><?= $page->title ?></h1>
-<?php
-}
+    <?php if ($page->title): ?>
+    <h1 class="title"><?= $page->title ?></h1>
+    <?php endif; ?>
 
-echo content($page->content);
-?>
+        <?= content($page->content) ?>
 
+<!--    <?php-->
+<!--        if (isset($_GET['id']) && $_GET['id'] == "36") {-->
+<!--    ?>-->
+<!--        <div class="status-checker" id="checker-section">-->
+<!--            <h3>Провери своя резултат 🎉</h3>-->
+<!--            <div class="status-buttons">-->
+<!--                <button class="status-btn btn-accepted" onclick="celebrate()">Приет съм! 🥳</button>-->
+<!--                <button class="status-btn btn-not-accepted" onclick="showSadness()">Не съм приет.. 😢</button>-->
+<!--            </div>-->
+<!--            <div id="animation-result"></div>-->
+<!--        </div>-->
+<!--    <?php-->
+<!--    }-->
+<!--?>-->
 </div>
+
+
+<script>
+    function celebrate() {
+        document.getElementById('animation-result').innerHTML = '<h4 style="margin-top:20px; color:#166534;">ЧЕСТИТО! Очакваме те! 🎊</h4>';
+
+        const duration = 3 * 1000;
+        const animationEnd = Date.now() + duration;
+        const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+        function randomInRange(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        const interval = setInterval(function() {
+            const timeLeft = animationEnd - Date.now();
+
+            if (timeLeft <= 0) {
+                return clearInterval(interval);
+            }
+
+            const particleCount = 50 * (timeLeft / duration);
+            confetti(Object.assign({}, defaults, {
+                particleCount,
+                origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
+            }));
+            confetti(Object.assign({}, defaults, {
+                particleCount,
+                origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+            }));
+        }, 250);
+    }
+
+    function showSadness() {
+        document.getElementById('animation-result').innerHTML = `
+            <div class="sad-emoji-anim">😢</div>
+            <p style="background:none !important; border:none !important; color:#64748b !important; text-align:center !important; box-shadow:none !important;">
+                Не се отказвай! Опитай отново следващия път!
+            </p>
+        `;
+    }
+
+    // Опционално: Преместване на секцията автоматично след заглавието "Учебна 2025/26 г."
+    document.addEventListener("DOMContentLoaded", function() {
+        const headings = document.querySelectorAll('h2');
+        headings.forEach(h => {
+            if (h.textContent.includes('2025/26')) {
+                const checker = document.getElementById('checker-section');
+                h.parentNode.insertBefore(checker, h.nextSibling);
+            }
+        });
+    });
+</script>
