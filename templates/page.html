@@ -441,7 +441,7 @@
         display: none !important;
     }
 
-    .tp-page-ltr-wrapper h2 {
+    #documents h2 {
         background: #f0f7ff !important;
         border-left: 6px solid #2563eb !important;
         padding: 25px !important;
@@ -451,7 +451,7 @@
         line-height: 1.5 !important;
     }
 
-    .tp-page-ltr-wrapper h2 span {
+    #documents h2 span {
         font-size: 18px !important;
         color: #1e293b !important;
         font-weight: 600 !important;
@@ -493,7 +493,17 @@
     endif;
 ?>
 
+<?php
+    if (isset($_GET['id']) && $_GET['id'] == "65"):
+?>
+    <div class="tp-page-ltr-wrapper" id="documents" dir="ltr">
+
+<?php
+    else:
+?>
 <div class="tp-page-ltr-wrapper" dir="ltr">
+
+<?php endif; ?>
 
     <?php if ($page->title): ?>
     <h1 class="title"><?= $page->title ?></h1>
