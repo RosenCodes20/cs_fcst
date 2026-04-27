@@ -739,6 +739,104 @@
             white-space: nowrap !important;
         }
     }
+
+    #academic-calendar {
+        max-width: 850px !important;
+        margin: 50px auto !important;
+        padding: 40px !important;
+        background: #ffffff !important;
+        border-radius: 16px !important;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06) !important;
+    }
+
+    #academic-calendar h1.title {
+        font-size: 32px !important;
+        color: #1e3a8a !important;
+        margin-bottom: 30px !important;
+        padding-bottom: 15px !important;
+        border-bottom: 3px solid #3b82f6 !important;
+        font-weight: 800 !important;
+        text-align: center;
+    }
+
+    #academic-calendar h2 {
+        font-size: 22px !important;
+        color: #334155 !important;
+        margin: 35px 0 15px 0 !important;
+        font-weight: 700 !important;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    #academic-calendar h2::before {
+        content: "📅";
+        font-size: 24px;
+    }
+
+    #academic-calendar hr {
+        border: none !important;
+        height: 1px !important;
+        background: #e2e8f0 !important;
+        margin: 10px 0 20px 0 !important;
+    }
+
+    #academic-calendar ul {
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 0 0 20px 0 !important;
+    }
+
+    #academic-calendar ul li {
+        background: #f8fafc !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 12px !important;
+        padding: 18px 25px !important;
+        margin-bottom: 12px !important;
+        transition: all 0.3s ease !important;
+        display: flex;
+        align-items: center;
+    }
+
+    #academic-calendar ul li:hover {
+        transform: translateX(10px) !important;
+        border-color: #3b82f6 !important;
+        background: #eff6ff !important;
+    }
+
+    #academic-calendar ul li a {
+        color: #1d4ed8 !important;
+        text-decoration: none !important;
+        font-weight: 600 !important;
+        font-size: 16px !important;
+        display: flex;
+        align-items: center;
+        margin-right: 0.2em;
+    }
+
+    #academic-calendar ul li a::before {
+        content: "📄";
+        margin-right: 15px;
+        font-size: 20px;
+    }
+
+    #academic-calendar p,
+    #academic-calendar div:empty {
+        display: none !important;
+    }
+
+    @media (max-width: 650px) {
+        #academic-calendar {
+            padding: 25px 20px !important;
+            margin: 20px !important;
+        }
+        #academic-calendar h1.title {
+            font-size: 24px !important;
+        }
+        #academic-calendar h2 {
+            font-size: 19px !important;
+        }
+    }
 </style>
 
 <p class="p-after">&nbsp;</p>
@@ -770,6 +868,11 @@
     elseif (isset($_GET['id']) && $_GET['id'] == "50"):
 ?>
             <div class="tp-page-ltr-wrapper" id="sessions" dir="ltr">
+
+<?php
+    elseif (isset($_GET['id']) && $_GET['id'] == "72"):
+?>
+                <div class="tp-page-ltr-wrapper" id="academic-calendar" dir="ltr">
 
 <?php
     else:
