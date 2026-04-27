@@ -594,6 +594,151 @@
     #blanks ul li a:contains("Магистър специалност ИТ") {
         display: none !important;
     }
+
+    #sessions {
+        max-width: 1000px !important;
+        margin: 40px auto !important;
+        padding: 30px !important;
+        background: #ffffff !important;
+        border-radius: 16px !important;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05) !important;
+    }
+
+    #sessions h1.title {
+        font-size: 28px !important;
+        color: #1e3a8a !important;
+        text-align: center !important;
+        margin: 0 0 20px 0 !important;
+        font-weight: 800 !important;
+        border-bottom: none !important;
+        text-transform: none !important;
+    }
+
+    #sessions h1:not(.title) {
+        font-size: 18px !important;
+        color: #475569 !important;
+        text-align: center !important;
+        margin: 12px 0 !important;
+        font-weight: 600 !important;
+        border: none !important;
+        padding: 0 !important;
+    }
+
+    #sessions h1 a {
+        color: #2563eb !important;
+        text-decoration: none !important;
+        background: #eff6ff !important;
+        padding: 10px 20px !important;
+        border-radius: 10px !important;
+        display: inline-block !important;
+        transition: all 0.3s ease !important;
+        border: 1px solid #bfdbfe !important;
+    }
+
+    #sessions h1 a:hover {
+        background: #3b82f6 !important;
+        color: #ffffff !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2) !important;
+    }
+
+    #sessions h1 strong {
+        color: #0f172a !important;
+        background: #f1f5f9 !important;
+        padding: 4px 10px !important;
+        border-radius: 6px !important;
+    }
+
+    #sessions hr {
+        display: none !important;
+    }
+
+    #sessions table {
+        display: table !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        border-collapse: collapse !important;
+        border: none !important;
+        margin-top: 30px !important;
+        background: #ffffff !important;
+        border-radius: 12px !important;
+        overflow: hidden !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+    }
+
+    #sessions thead {
+        background: #1e3a8a !important;
+        display: table-header-group !important;
+    }
+
+    #sessions tr {
+        display: table-row !important;
+        transition: background-color 0.2s ease !important;
+    }
+
+    #sessions th {
+        color: #ffffff !important;
+        font-weight: 600 !important;
+        padding: 16px 20px !important;
+        text-align: left !important;
+        border: none !important;
+        font-size: 15px !important;
+        display: table-cell !important;
+    }
+
+    #sessions tbody {
+        display: table-row-group !important;
+        grid-template-columns: none !important;
+        gap: 0 !important;
+    }
+
+    #sessions td {
+        padding: 16px 20px !important;
+        border-bottom: 1px solid #e2e8f0 !important;
+        border-top: none !important;
+        border-left: none !important;
+        border-right: none !important;
+        color: #334155 !important;
+        font-size: 15px !important;
+        display: table-cell !important;
+        flex-direction: row !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        transform: none !important;
+        border-radius: 0 !important;
+    }
+
+    #sessions td:hover {
+        transform: none !important;
+        box-shadow: none !important;
+        border-color: #e2e8f0 !important;
+    }
+
+    #sessions tbody tr:last-child td {
+        border-bottom: none !important;
+    }
+
+    #sessions tbody tr:hover td {
+        background-color: #f8fafc !important;
+    }
+
+    #sessions td span {
+        color: inherit !important;
+        font-family: inherit !important;
+        white-space: normal !important;
+    }
+
+    #sessions h2 {
+        display: none !important;
+    }
+
+    @media (max-width: 768px) {
+        #sessions table {
+            display: block !important;
+            overflow-x: auto !important;
+            white-space: nowrap !important;
+        }
+    }
 </style>
 
 <p class="p-after">&nbsp;</p>
@@ -621,6 +766,11 @@
                     }
                 });
             </script>
+<?php
+    elseif (isset($_GET['id']) && $_GET['id'] == "50"):
+?>
+            <div class="tp-page-ltr-wrapper" id="sessions" dir="ltr">
+
 <?php
     else:
 ?>
