@@ -1,12 +1,14 @@
 	<?php
+    // Source - https://stackoverflow.com/a/47261330
+    // Posted by Vicky Mahale
+    // Retrieved 2026-04-28, License - CC BY-SA 3.0
 
-// !important - Other configs:
+    error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING ^ E_DEPRECATED);
+
+    // !important - Other configs:
 // - .htaccess
 
-define ('SQL_HOST', 'localhost');
-define ('SQL_DATABASE', 'cstu');
-define ('SQL_USER', 'root');
-define ('SQL_PASSWORD', '');
+
 
 // �����
 

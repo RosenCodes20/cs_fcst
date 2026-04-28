@@ -24,7 +24,7 @@ class MySQL
 
         if ( !isset( self::$mysqli ) ) {
 
-            $result = new mysqli( "127.0.0.1", "root", "rootpassword" );
+            $result = new mysqli( SQL_HOST, SQL_USER, SQL_PASSWORD );
 
                         if ( mysqli_connect_errno() )
                         {
