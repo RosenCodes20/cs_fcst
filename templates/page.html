@@ -181,7 +181,7 @@
         line-height: 1.3 !important;
     }
 
-    .tp-page-ltr-wrapper h1:not(.title)::after {
+    #erasmus h1:not(.title)::after {
         content: '';
         position: absolute;
         bottom: -15px;
@@ -1000,6 +1000,216 @@
             margin-left: 5px !important;
         }
     }
+
+    #candidates {
+        max-width: 1000px !important;
+        margin: 40px auto !important;
+        padding: 50px !important;
+        background: #ffffff !important;
+        font-family: 'Inter', -apple-system, system-ui, sans-serif !important;
+        color: #1e293b !important;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08) !important;
+        border-radius: 24px !important;
+        border: 1px solid #f1f5f9 !important;
+        position: relative !important;
+    }
+
+    #candidates * {
+        width: auto !important;
+        height: auto !important;
+        box-sizing: border-box !important;
+    }
+
+    #candidates img,
+    #candidates a:empty,
+    #candidates hr,
+    #candidates p:empty,
+    #candidates td:empty,
+    #candidates br {
+        display: none !important;
+    }
+
+    #candidates table,
+    #candidates tbody,
+    #candidates tr,
+    #candidates td {
+        display: block !important;
+        width: 100% !important;
+        border: none !important;
+        background: transparent !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+    }
+
+    #candidates h1.title {
+        font-size: 36px !important;
+        font-weight: 900 !important;
+        color: #0f172a !important;
+        text-align: center !important;
+        letter-spacing: -1px !important;
+        margin-bottom: 60px !important;
+        display: block !important;
+    }
+
+    #candidates h1:not(.title) {
+        font-size: 26px !important;
+        font-weight: 800 !important;
+        color: #0f172a !important;
+        margin: 70px 0 30px 0 !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding-bottom: 15px !important;
+        border-bottom: 2px solid #f1f5f9 !important;
+    }
+
+    #candidates h2 {
+        font-size: 19px !important;
+        font-weight: 700 !important;
+        color: #ffffff !important;
+        background: linear-gradient(135deg, #b31b1b 0%, #8b1515 100%) !important;
+        padding: 20px 30px !important;
+        border-radius: 14px !important;
+        margin: 40px 0 25px 0 !important;
+        box-shadow: 0 10px 20px rgba(179, 27, 27, 0.15) !important;
+        border: none !important;
+    }
+
+    #candidates h2 span,
+    #candidates h2 strong {
+        color: #ffffff !important;
+        background: transparent !important;
+    }
+
+    #candidates p {
+        margin-bottom: 20px !important;
+        font-size: 17px !important;
+        line-height: 1.8 !important;
+        color: #475569 !important;
+        background: transparent !important;
+        border: none !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+    }
+
+    #candidates ul, #candidates ol {
+        margin: 25px 0 40px 20px !important;
+        padding: 0 !important;
+        list-style: none !important;
+    }
+
+    #candidates li {
+        margin-bottom: 15px !important;
+        padding-left: 30px !important;
+        position: relative !important;
+        color: #334155 !important;
+        font-weight: 500 !important;
+    }
+
+    #candidates li::before {
+        content: "→" !important;
+        position: absolute !important;
+        left: 0 !important;
+        color: #b31b1b !important;
+        font-weight: bold !important;
+    }
+
+    #candidates a {
+        color: #b31b1b !important;
+        text-decoration: none !important;
+        font-weight: 700 !important;
+        transition: all 0.3s ease !important;
+        border-bottom: 2px solid rgba(179, 27, 27, 0.1) !important;
+        background: none !important;
+    }
+
+    #candidates a:hover {
+        color: #ef4444 !important;
+        border-bottom-color: #ef4444 !important;
+        background: none !important;
+    }
+
+    #Top {
+        display: none !important;
+    }
+
+    #candidates a:empty {
+        display: none !important;
+        visibility: hidden !important;
+        width: 0 !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+    }
+
+    #Как h1::before, #Кога h1::before, #Къде h1::before, #Какво h1::before {
+        display: none !important;
+    }
+
+    #candidates button,
+    #candidates input[type="button"],
+    #candidates [style*="background-color: #b31b1b"] {
+        background: #0f172a !important;
+        color: #ffffff !important;
+        border: none !important;
+        padding: 16px 32px !important;
+        border-radius: 12px !important;
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1px !important;
+        cursor: pointer !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15) !important;
+        margin: 10px 0 !important;
+    }
+
+    #candidates button:hover {
+        background: #b31b1b !important;
+        transform: translateY(-3px) !important;
+        box-shadow: 0 12px 24px rgba(179, 27, 27, 0.25) !important;
+    }
+
+    #candidates h1 button {
+        padding: 8px 16px !important;
+        font-size: 11px !important;
+        background: #f1f5f9 !important;
+        color: #64748b !important;
+        box-shadow: none !important;
+    }
+
+    #candidates h1 button:hover {
+        background: #e2e8f0 !important;
+        color: #0f172a !important;
+    }
+
+    #candidates blockquote,
+    #candidates [style*="margin-left: 40px"] {
+        margin-left: 0 !important;
+        padding: 25px 30px !important;
+        background: #f8fafc !important;
+        border-left: 5px solid #e2e8f0 !important;
+        border-radius: 12px !important;
+        font-style: italic !important;
+        color: #64748b !important;
+    }
+
+    #candidates a[href="#Какво"], #candidates tr > td:nth-child(1) > ul > li:nth-child(3) a[href="#Как"], #candidates tr > td:nth-child(1) > ul > li:nth-child(4) a[href="#Кога"] {
+        display: none !important;
+    }
+
+    @media (max-width: 768px) {
+        #candidates {
+            padding: 25px !important;
+            margin: 20px !important;
+        }
+        #candidates h1.title {
+            font-size: 28px !important;
+        }
+    }
 </style>
 
 <p class="p-after">&nbsp;</p>
@@ -1046,6 +1256,11 @@
     elseif (isset($_GET['id']) && $_GET['id'] == "21"):
 ?>
             <div class="tp-page-ltr-wrapper" id="candidates" dir="ltr">
+
+<?php
+    elseif (isset($_GET['id']) && $_GET['id'] == "61"):
+?>
+                <div class="tp-page-ltr-wrapper" id="erasmus" dir="ltr">
 
 <?php
     else:
