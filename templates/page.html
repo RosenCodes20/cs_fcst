@@ -1429,6 +1429,7 @@
     }
 
     #documents-pass h1.title {
+        display: block !important;
         font-size: 36px !important;
         font-weight: 900 !important;
         color: #0f172a !important;
@@ -1543,6 +1544,10 @@
 
     #documents-pass br,
     #documents-pass p:empty {
+        display: none !important;
+    }
+
+    #documents-pass p + p + p, #documents-pass p + p + p + p, #documents-pass p + p + p + p + p {
         display: none !important;
     }
 
