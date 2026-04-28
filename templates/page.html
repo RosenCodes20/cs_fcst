@@ -1115,7 +1115,7 @@
         clear: both !important;
     }
 
-    #candidates p:has(a[href*="tu-sofia.bg/uplan"]) {
+    #candidates p:has(a[href*="tu-sofia.bg/uplan"]), #magisters-accept p:has(a) {
         display: block !important;
         width: 100% !important;
         min-width: 100% !important;
@@ -1129,7 +1129,7 @@
         clear: both !important;
     }
 
-    #candidates p:has(a[href*="tu-sofia.bg/uplan"]) a {
+    #candidates p:has(a[href*="tu-sofia.bg/uplan"]) a, #magisters-accept p:has(a) a {
         max-width: none !important;
     }
 
@@ -1242,6 +1242,151 @@
             font-size: 28px !important;
         }
     }
+
+    #magisters-accept {
+        max-width: 1000px !important;
+        margin: 40px auto !important;
+        padding: 50px !important;
+        background: #ffffff !important;
+        font-family: 'Inter', -apple-system, sans-serif !important;
+        border-radius: 24px !important;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.05) !important;
+        border: 1px solid #f1f5f9 !important;
+    }
+
+    #magisters-accept * {
+        box-sizing: border-box !important;
+    }
+
+    #magisters-accept h1.title {
+        font-size: 14px !important;
+        text-transform: uppercase !important;
+        letter-spacing: 2px !important;
+        color: #b31b1b !important;
+        font-weight: 700 !important;
+        text-align: center !important;
+        margin-bottom: 10px !important;
+        display: block !important;
+    }
+
+    #magisters-accept h1:not(.title) {
+        font-size: 32px !important;
+        font-weight: 800 !important;
+        color: #0f172a !important;
+        text-align: center !important;
+        margin-bottom: 40px !important;
+        line-height: 1.2 !important;
+    }
+
+    #magisters-accept p {
+        font-size: 17px !important;
+        line-height: 1.8 !important;
+        color: #475569 !important;
+        margin-bottom: 20px !important;
+    }
+
+    #magisters-accept ul {
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 25px 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+
+    #magisters-accept li {
+        background: #f8fafc !important;
+        padding: 16px 20px !important;
+        border-radius: 12px !important;
+        border-left: 4px solid #b31b1b !important;
+        color: #1e293b !important;
+        font-weight: 500 !important;
+        display: flex !important;
+        align-items: center !important;
+        transition: transform 0.2s ease !important;
+    }
+
+    #magisters-accept li:hover {
+        transform: translateX(5px) !important;
+    }
+
+    #magisters-accept li a {
+        color: #b31b1b !important;
+        text-decoration: none !important;
+        font-weight: 700 !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+    }
+
+    #magisters-accept a:not(li a) {
+        color: #b31b1b !important;
+        text-decoration: none !important;
+        font-weight: 600 !important;
+        border-bottom: 2px solid rgba(179, 27, 27, 0.1) !important;
+        transition: all 0.3s ease !important;
+    }
+
+    #magisters-accept a:not(li a):hover {
+        border-bottom-color: #b31b1b !important;
+        background: rgba(179, 27, 27, 0.05) !important;
+    }
+
+    .status-checker {
+        margin-top: 50px !important;
+        padding: 30px !important;
+        background: #fff5f5 !important;
+        border: 2px dashed #feb2b2 !important;
+        border-radius: 20px !important;
+        text-align: center !important;
+    }
+
+    .status-checker h3 {
+        font-size: 20px !important;
+        color: #c53030 !important;
+        margin-bottom: 25px !important;
+    }
+
+    .status-buttons {
+        display: flex !important;
+        gap: 15px !important;
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+    }
+
+    .status-btn {
+        padding: 14px 28px !important;
+        border-radius: 12px !important;
+        font-weight: 700 !important;
+        cursor: pointer !important;
+        border: none !important;
+        transition: all 0.3s ease !important;
+        font-family: inherit !important;
+    }
+
+
+    #magisters-accept ul + p + p + ul + p + p {
+        display: none; !important;
+    }
+
+    #magisters-accept ul + p + p + ul > li > a {
+        margin-right: 0.5em !important;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+        #magisters-accept {
+            padding: 25px !important;
+            margin: 20px !important;
+        }
+        #magisters-accept h1:not(.title) {
+            font-size: 24px !important;
+        }
+    }
 </style>
 
 <p class="p-after">&nbsp;</p>
@@ -1293,6 +1438,11 @@
     elseif (isset($_GET['id']) && $_GET['id'] == "61"):
 ?>
                 <div class="tp-page-ltr-wrapper" id="erasmus" dir="ltr">
+
+<?php
+    elseif (isset($_GET['id']) && $_GET['id'] == "8"):
+?>
+                    <div class="tp-page-ltr-wrapper" id="magisters-accept" dir="ltr">
 
 <?php
     else:
