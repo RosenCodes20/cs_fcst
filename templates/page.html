@@ -1106,6 +1106,31 @@
         list-style: none !important;
     }
 
+    #candidates td:has(p > a) {
+        display: block !important;
+        width: 100% !important;
+        padding: 0 !important;
+        clear: both !important;
+    }
+
+    #candidates p:has(a[href*="tu-sofia.bg/uplan"]) {
+        display: block !important;
+        width: 100% !important;
+        min-width: 100% !important;
+        margin: 20px 0 !important;
+        padding: 20px !important;
+        background: #f8fafc !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 12px !important;
+        box-sizing: border-box !important;
+        float: none !important;
+        clear: both !important;
+    }
+
+    #candidates p:has(a[href*="tu-sofia.bg/uplan"]) a {
+        max-width: none !important;
+    }
+
     #candidates li {
         margin-bottom: 15px !important;
         padding-left: 30px !important;
